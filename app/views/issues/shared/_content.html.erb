@@ -1,0 +1,51 @@
+<div id="comments">
+	<div id="comments-spinner">
+	  <i class="fa fa-spinner fa-3x fa-pulse"></i>
+	</div>
+
+	<%= render partial: "comments/template", locals: {commentable: @article } %>
+</div>
+
+<% unless controller_name === 'materials' %>
+	<%= render('issues/shared/interstitial') %>
+<% end %>
+
+<% unless box_position(@page.try(:master_position), -1) < 1 %>
+  <div id="box<%= box_position @page.try(:master_position), -1 %>" class="box left">
+	<img src="" alt="" usemap="">
+
+	<div class="map"></div>
+  </div>
+<% end %>
+
+<div id="box<%= box_position @page.try(:master_position) %>" class="box center">
+	<img src="" alt="" usemap="">
+
+	<div class="map"></div>
+</div>
+
+<div id="box<%= box_position @page.try(:master_position), 1 %>" class="box">
+	<img src="" alt="" usemap="">
+
+	<div class="map"></div>
+</div>
+
+<div id="box<%= box_position @page.try(:master_position), 2 %>" class="box">
+	<img src="" alt="">
+
+	<div class="map"></div>
+</div>
+
+<div class="arrow prev">
+	<div class="arrow-offset"></div>
+</div>
+<div class="arrow next">
+	<div class="arrow-offset"></div>
+</div>
+<img class="swipe" src="https://d2y1ry8g49t2dy.cloudfront.net/static/swipe.svg">
+</img>
+
+<input type="hidden" id="position" value="<%= @page.try(:master_position) || 1 %>">
+<input type="hidden" id="issue_id" value="<%= @issue.id %>">
+
+<input type="hidden" id="article_id" value="">

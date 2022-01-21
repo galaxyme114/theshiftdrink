@@ -1,0 +1,6 @@
+.page-overlay {
+  background-color: #333;
+  border: 1px dashed white;
+  position: absolute;
+  opacity: 0.8;
+}

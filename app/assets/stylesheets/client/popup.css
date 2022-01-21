@@ -1,0 +1,110 @@
+/*background*/
+html body #bio_ep_bg {
+	width: 100vw;
+	height: 100vh;
+	opacity: 0.5;
+}
+
+/*popup*/
+html body #bio_ep {
+	display: none;
+	width: 660px;
+	height: 680px;
+	opacity: 0;
+	background-color: rgba(255, 255, 255, 0.4);
+}
+
+/*close button*/
+html body #bio_ep_close {
+	display: none;
+	top: 25px;
+	right: 25px;
+	left: auto;
+	z-index: 10002;
+	background: none;
+	margin: 0;
+	font-size: 70px;
+	line-height: 55px;
+	font-weight: 300;
+	height: auto;
+	width: auto;
+}
+
+html body .bio_ep_content {
+	padding: 25px;
+	height: 100%;
+	border: black 2px solid;
+}
+
+html body .bio_ep_head, html body .bio_ep_footer {
+	width: 100%;
+	height: 15%;
+	background: black;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+html body .bio_ep_head img {
+	height: 60%;
+}
+
+html body .bio_ep_footer img {
+	width: 70%;
+}
+
+html body .bio_ep_body {
+	font-family: 'Oswald', sans-serif;
+	width: 100%;
+	height: 70%;
+	padding: 50px;
+	background: white;
+	border: black 1px solid;
+	display: flex;
+	flex-direction: row;
+}
+
+html body .bio_ep_body .left, html body .bio_ep_body .right {
+	padding: 15px;
+}
+
+html body .bio_ep_body .left {
+	border-right: 5px black solid;
+	width: 60%;
+}
+
+html body .bio_ep_body .left h3 {
+	font-weight: 500;
+	font-size: 32px;
+}
+
+html body .bio_ep_body .left a {
+	text-decoration: underline;
+	color: #337ab7;
+}
+
+html body .bio_ep_body .left p {
+	font-size: 24px;
+	text-align: right;
+	line-height: 40px;
+	font-weight: 100;
+}
+
+.addthis_inline_follow_toolbox, .at-follow-tbx-element, .addthis_vertical_style {
+	height: 100%;
+
+}
+
+.at-follow-tbx-element p {
+	display: none;
+}
+
+.addthis_vertical_style {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+}
+
+.atclear, .addthis_follow_label {
+	display: none;
+}

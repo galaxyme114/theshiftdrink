@@ -1,0 +1,25 @@
+<div id="container" class="<%= @issue.role.downcase %> <%= @issue.orientation.downcase %>">  
+  <div id="wrapper">
+    <ul id="scroll-content" class="menu">
+        <% @issue.articles.order(:position).each do |article| %>
+          <% unless article.pages.first.nil? %>
+            <li class="menu-item">
+              <%= link_to(material_show_path(@issue.friendly_id, article.pages.first.friendly_id), :class => 'nav-fade', :rel => 'external') do %>
+                <%= article_thumbnail_for(article, :alt => article.title, :width => "560", :height => "292") %>
+              <% end %>
+            </li>
+          <% end %>
+      <% end %>
+    </ul>
+  </div>
+
+  <div id="comments">
+    <div id="comments-spinner">
+      <i class="fa fa-spinner fa-3x fa-pulse"></i>     
+    </div>
+  </div>
+
+  <%= render 'issues/shared/content' %>
+
+  <%= render 'issues/shared/bottom' %>
+</div><!-- #container -->

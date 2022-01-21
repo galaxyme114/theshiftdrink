@@ -1,0 +1,32 @@
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+	<meta name="p:domain_verify" content="d2938e12af410e6099c887ab7de689b8"/>
+	<meta property="og:description" content="The Shift Drink Magazine taps top industry professionals, celebrity chefs, and up-and-coming restauranteurs for trade secrets, life lessons, and an insiders' scoop on the latest happenings, best practices, and must have new products for the service industry." />
+	<meta property="og:locale" content="en_US" />
+	<meta property="og:site_name" content="The Shift Drink Magazine" />
+
+  	<title>The Shift Drink :: For the Industry, By the Industry</title>
+
+    <%= favicon_link_tag 'favicon.ico' %>
+
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet" >
+	<%= stylesheet_link_tag 'welcome', media: 'all', 'data-turbolinks-track' => true %>
+	<%= csrf_meta_tags %>
+</head>
+<body>
+	<div id="fb-root"></div>
+
+	<%= yield %>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+
+	<%= javascript_include_tag 'welcome', 'data-turbolinks-track' => true %>
+
+	<script>window.twttr=(function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],t=window.twttr||{};if(d.getElementById(id))return;js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);t._e=[];t.ready=function(f){t._e.push(f);};return t;}(document,"script","twitter-wjs"));</script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<% content_for :title do %>
+	<%= render 'admin/shared/heads' %>
+ 	<p>MEDIA EDITOR - EDIT</p>
+<% end %>
+
+<% content_for :buttons do %>
+
+<% end %>
+
+<% content_for :page_content do %>
+	<div class="col-md-6">
+	  <div class="panel panel-default">
+	    <div class="panel-heading">Edit Media Object</div>
+
+      	<%= simple_form_for(@media, url: medium_path(@issue, @article, @media), method: :patch) do |f| %>
+			<div class="panel-body">
+				<div class="form-group">
+					<%= f.input :override_url, error: false, input_html: { :class => 'form-control' }, label: 'Override URL' %>
+				</div>
+				<div class="form-group">
+					<%= f.input :asset, error: false, input_html: { :class => 'form-control' }, label: 'Image' %>
+
+					<% if @media.asset.present? %>
+						<div class="well" style="word-break: break-all; padding: 10px; border-radius: 0">
+							<small><%= link_to @media.asset_url, @media.asset_url, :target => '_blank' %></small>
+						</div>
+					<% end %>
+				</div>
+			</div>
+
+			<div class="panel-footer">
+				<%= f.button :submit, :class => 'btn btn-primary btn-sm' %>
+
+				<%= link_to('Remove Media', medium_path(@issue, @article, @media),
+					:class => 'btn btn-danger btn-sm', method: :delete,
+					:data  => { confirm: 'Are you sure you want to remove this article and all its pages?' }) %>
+			</div>
+      	<% end %>
+	  </div>
+	</div>
+<% end %>
+
+<%= render 'admin/shared/layout' %>

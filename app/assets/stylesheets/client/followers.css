@@ -1,0 +1,50 @@
+.followers {
+	bottom: 44px;
+	position: absolute;
+	padding: 0 0 15px 15px;
+	right: -450px;
+	max-width: 400px;
+	background-color: rgba(0,0,0,0.8);
+	z-index: 990;
+	width: 400px;
+    -webkit-transition: all 1s ease-in-out;
+    -moz-transition: all 1s ease-in-out;
+    -o-transition: all 1s ease-in-out;
+    transition: all 1s ease-in-out;
+}
+.followers h4, .followers h3 {
+  color: #FFFFFF;
+  font-size: 130%;
+  text-transform: uppercase;
+  font-family: 'Oswald', sans-serif;
+  margin-top: -5px;
+  letter-spacing: 0.1em;
+}
+.followers h3 {
+	font-family: 'Open Sans Condensed', sans-serif;
+	text-transform: none;
+}
+.followers .close-followers-prompt {
+  color: #FFFFFF;
+  text-align: right;
+  font-size: 10px;
+  padding-top: 7.5px;
+  padding-right: 7.5px;
+}
+.followers .close-followers-prompt:hover {
+  cursor: pointer;
+}
+.followers .stage1, .followers .stage2, .followers .stage3 {
+	display: none;
+}
+.followers .stage1 .btn-social-login {
+	background-color: #4267b1;
+	font-family: 'Lucida Grande';
+	text-transform: none;
+	width: 280px;
+	border-radius: 6px;
+	margin-bottom: 10px;
+}
+.followers .stage1 .subscribe_text {
+	font-size: 18px;
+}

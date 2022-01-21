@@ -1,0 +1,25 @@
+<% content_for :devise do %>
+	<div class="panel panel-default">
+		<div class="panel-heading text-centered">
+			<h3 class="panel-title">Please sign in</h3>
+		</div>
+		<div class="panel-body">
+			<%= simple_form_for(resource, as: resource_name, url: session_path(resource_name), html: { method: :post }) do |f| %>
+				<div class="form-group">
+					<input autofocus="autofocus" class="string email form-control" placeholder="Email" id="user_email" name="user[email]" type="email">
+				</div>
+				<div class="form-group">
+					<input class="string password form-control" placeholder="Password" id="user_password" name="user[password]" type="password">
+				</div>
+
+				<%= f.submit 'Log In', label: false, :class => 'btn btn-default btn-block' %>
+			<% end %>
+		</div>
+	</div>
+
+	<p class="text-centered">
+		<%= link_to "Forgot your password?", new_password_path(resource_name) %>        
+	</p>
+<% end %>
+
+<%= render 'devise/shared/layout' %>

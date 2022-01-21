@@ -1,0 +1,52 @@
+<% content_for :title do %>
+  <h4>Users - NEW</h4>
+<% end %>
+
+<% content_for :buttons do %>
+    <%= link_to users_path, :class => 'btn btn-labeled btn-default' do %>
+      <span class="btn-label"><i class="fa fa-list"></i></span> View Users
+    <% end %>
+<% end %>
+
+<% content_for :page_content do %>
+  <div class="panel panel-default">
+    <div class="panel-heading text-strong">Add New User</div>
+
+    <%= simple_form_for(@user) do |f| %>
+      <div class="panel-body">
+        <div class="col-md-6">
+          <div class="form-group">
+            <%= f.input :name, label: 'Full Name', error: false, input_html: { class: 'form-control' } %>
+          </div>
+
+          <div class="form-group">
+            <%= f.input :email, error: false, input_html: { class: 'form-control' } %>
+          </div>
+
+          <div class="form-group">
+            <%= f.input :title, error: false, input_html: { class: 'form-control' } %>
+          </div>
+
+          <div class="form-group">
+            <%= f.input :role, collection: ['Administrator', 'Editor', 'User'], selected: 'User', input_html: { class: 'form-control' } %>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="well">
+            <h4 class="strong">Import Notice:</h4>
+
+            <p>When a user is created, a confirmation email will be sent to the email listed on the account. They will then be able to log into the portal.</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam assumenda reiciendis, porro?</p>
+
+            <p>EXPLAIN ROLES</p>
+          </div>
+        </div>
+      </div>
+      <div class="panel-footer">
+        <%= f.button :submit, class: 'btn btn-primary btn-sm' %>
+      </div>
+    <% end %>
+  </div>
+<% end %>
+
+<%= render 'admin/shared/layout' %>

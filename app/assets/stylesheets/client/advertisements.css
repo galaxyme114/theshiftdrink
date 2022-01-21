@@ -1,0 +1,131 @@
+
+/* ---------------------------------------------------------*
+ *                                                          *
+ *                     ADVERTISEMENTS                       *
+ *                                                          *
+ * ---------------------------------------------------------*/
+
+
+.ad-wrapper {
+	display: flex;
+	justify-content: space-around;
+	flex-direction: column;
+  float: right;
+  width: 180px;
+  margin-top: 10px;
+  margin-bottom: 54px;
+  margin-right: 0;
+  height: calc(85vh - 64px);
+  position: absolute;
+  right: -180px;
+	-webkit-transition: all 1s ease-in-out;
+	-moz-transition: all 1s ease-in-out;
+	-o-transition: all 1s ease-in-out;
+	transition: all 1s ease-in-out;
+}
+#main-advertisements {
+	display:flex;
+	z-index: 980;
+}
+.mobile-banner-ad {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 10px;
+	width: 180px;
+}
+.ad {
+  z-index: 980;
+}
+.ad-sky {
+  width: 100%;
+  padding: 0 10px 10px;
+}
+.ad-square {
+  float: right;
+  width: 300px;
+  height: 250px;
+}
+.ad-mob {
+	display: flex;
+	align-items: center;
+  width: 100%;
+  position: absolute;
+  left:0;
+	top:-100px;
+	padding: 5px;
+	background-color: #cccccc;
+  right:5%;
+  margin-bottom: 0;
+  margin-left: auto;
+  margin-right: auto;
+	-webkit-transition: all 1s ease-in-out;
+	-moz-transition: all 1s ease-in-out;
+	-o-transition: all 1s ease-in-out;
+	transition: all 1s ease-in-out;
+}
+.ad-mob .ad-butler {
+	display: flex;
+	justify-content: center;
+	width: 93%;
+	margin-left: 14px;
+}
+.ad-tablet {
+  width: 728px;
+  height: 90px;
+  position: absolute;
+	top:-100px;
+	padding: 5px;
+	background-color: #cccccc;
+  left:0;
+  right:0;
+  bottom: 0;
+  margin-bottom: 50px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.ad-butler img {
+  width: 100%;
+}
+.advertise-with-us {
+	bottom: 15px;
+  color: #000000;
+  float: right;
+  margin: 5px;
+  text-transform: uppercase;
+  font-size: 10px;
+}
+.advertise-with-us:hover {
+  text-decoration: none;
+}
+.ad-mob .advertise-with-us {
+	font-size: 8px;
+	font-weight: 500;
+	right: -17px;
+	position: absolute;
+	transform: rotate(-90deg);
+}
+.ad-mob .advertise-with-us a {
+	color: rgba(53, 53, 53, 0.4);
+}
+@media ( min-height: 770px ) {
+  .ad-sky { display: inline-block; }
+}
+@media ( max-width: 1150px ) {
+  .ad-sky { display: none; }
+}
+@media ( max-height: 769px ) {
+  .ad-sky { display: inline-block; }
+}
+@media ( max-width: 1220px ) {
+  .ad-sky { display: none; }
+}
+@media ( min-width: 1000px ) {
+  .ad-mob { display: none; }
+}
+.ad-skyscraper2 {
+	display: none;
+}
+.ad-mobile2 {
+	display: none;
+}

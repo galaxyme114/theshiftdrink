@@ -1,0 +1,68 @@
+<% comments.each do |comment| %>  
+  <div class="comments-show">
+    <div class="comment">
+      <div class="col-xs-1 no-padd-left">
+        <div class="comment-avatar">
+          <%= avatar_for(comment.user) %>
+        </div>
+      </div><!-- .col-xs-1 -->
+
+      <div class="col-xs-11">
+        <span class="comment-meta">
+          <%= link_to comment.user.name, '' %> 
+          <span class="bullet">&bull;</span> 
+          <%= time_ago_in_words(comment.created_at) %> ago
+        </span>
+        
+        <div class="comment-body">
+          <p><%= comment.body %></p>
+          
+          <% if user_signed_in? && current_user == comment.user %>
+            <%= simple_form_for(comment, url: comment_path(comment, format: :json), html: { :class => 'async'}, method: :patch) do |f| %>
+
+              <textarea class="form-control no-resize" id="comment_body" name="comment[body]"><%= comment.body %></textarea>
+              
+              <div class="field form-group">
+                <%= f.submit "Update", :class => 'btn btn-primary btn-xs' %>
+
+                <a role="button" class="comment-edit btn btn-default btn-xs">Cancel</a>
+              </div>
+            <% end %>
+          <% end %>
+        </div><!-- .comment-nav -->
+
+        <% if user_signed_in? %>
+          <div class="comment-nav">
+            <ul>
+              <% if comment.user == current_user %>
+                <li><a role="button" class="comment-edit">Edit</a></li>
+              <% end %>
+              <li><a role="button" class="comment-reply">Reply</a></li>
+            </ul>
+          </div><!-- .comment-nav -->
+
+          <div class="reply-form">
+            <%= simple_form_for @new_comment, url: comments_path, method: :post, remote: true do |f| %>
+              <%= f.input :commentable_id,   as: :hidden, value: @new_comment.commentable_id %>
+              <%= f.input :commentable_type, as: :hidden, value: @new_comment.commentable_type %>
+
+              <input type="hidden" name="comment[comment_id]" value="<%= comment.id %>">
+
+              <div class="field">
+                <textarea class="form-control no-resize" name="comment[body]" id="comment_body"></textarea>
+              </div>
+
+              <div class="field form-group">
+                <%= f.submit "Post Reply", :class => 'btn btn-primary btn-xs' %>
+
+                <a role="button" class="comment-reply btn btn-default btn-xs">Cancel</a>
+              </div>
+            <% end %>
+          </div><!-- .reply-form -->
+        <% end %>
+      </div><!-- .col-xs-11 -->
+  
+      <%= render partial: "comments/reply", locals: {comments: comment.children} %>
+    </div>
+  </div>
+<% end %>

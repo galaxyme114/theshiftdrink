@@ -1,0 +1,11 @@
+<% unless @issue.pages.empty? %>
+	<%= link_to issue_previewed_url(@issue.preview_token, subdomain: 'www'), :class => 'btn btn-labeled btn-default', target: '_blank' do %>
+		<span class="btn-label"><i class="fa fa-eye"></i></span> Preview
+	<% end %>
+<% end %>
+
+<% if controller_name != 'pages' %>
+	<%= link_to pages_path, :class => 'btn btn-labeled btn-default' do %>
+		<span class="btn-label"><i class="fa fa-file-o"></i></span> Pages
+	<% end %>
+<% end %>

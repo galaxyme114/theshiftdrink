@@ -1,0 +1,37 @@
+<% content_for :title do %>
+	<%= render 'admin/shared/heads' %>
+	<p>PAGE GALLERY</p>
+<% end %>
+
+<% content_for :buttons do %>
+	<%= render 'admin/pages/buttons' %>
+<% end %>
+
+<% content_for :page_content do %>
+<div id="pages" class="<%= @issue.role.downcase %> sortable" data-href="<%= sort_pages_url(@issue, @article) %>">
+	<% unless @pages.nil? %>
+		<% @pages.each do |page| %>
+			<div class="col-md-3" data-identifier="<%= page.id %>">
+				<div class="thumbnail">
+					<%= render 'admin/pages/caption', page: page %>
+					<%= image_tag page.image_url(:small) %>
+				</div>
+			</div>
+		<% end %>
+	<% end %>
+
+	<div class="col-md-3">
+		<% if can?(:administrate, Page) %>
+			<a class="thumbnail text-centered" id="create-page">
+				<i class="fa fa-plus fa-5x" id="btn-add"></i> <p>Add New Page(s)</p>
+			</a>
+
+			<%= form_for(:page, url: pages_path(@issue, @article), html: { multipart: true, id: 'new_page' }, method: :post) do |f| %>
+			     <%= f.file_field :image, multiple: true, name: "pages[image][]", :class => 'hidden', onchange: 'this.form.submit()' %>
+			<% end %>
+		<% end %>
+	</div>
+</div>
+<% end %>
+
+<%= render 'admin/shared/layout' %>

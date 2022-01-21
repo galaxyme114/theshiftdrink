@@ -1,0 +1,46 @@
+<% content_for :title do %>
+	<%= render 'admin/shared/heads' %>
+ 	<p>MEDIA GALLERY</p>
+<% end %>
+
+<% content_for :buttons do %>
+	<% if can?(:administrate, Media) %>
+		<%= link_to new_medium_path(@issue, @article), :class => 'btn btn-labeled btn-default' do %>
+			<span class="btn-label"><i class="fa fa-plus"></i></span> Create New
+		<% end %>
+
+		<a role="button" class="btn btn-labeled btn-default" id="create-media">
+			<span class="btn-label"><i class="fa fa-files-o"></i></span> Create Multiple
+		</a>
+
+		<%= form_for(:media, url: multiple_media_path(@issue, @article), html: { multipart: true, id: 'new_media', :class => 'hidden' }, method: :post) do |f| %>
+		     <%= f.file_field :asset, multiple: true, name: "medias[asset][]", :class => 'hidden', onchange: 'this.form.submit()' %>
+		<% end %>
+	<% end %>
+
+	<%= link_to pages_path(@issue, @article), :class => 'btn btn-labeled btn-default' do %>
+		<span class="btn-label"><i class="fa fa-file-o"></i></span> View Article
+	<% end %>
+
+	<%= link_to issue_gallery_url(@issue, @article, subdomain: 'www'), :class => 'btn btn-labeled btn-default', :target => '_blank' do %>
+		<span class="btn-label"><i class="fa fa-eye"></i></span> Preview
+	<% end %>
+<% end %>
+
+<% content_for :page_content do %>
+<div id="medias" class="<%= @issue.role.downcase %> sortable" data-href="<%= sort_media_url(@issue, @article) %>">
+	<% unless @medias.nil? %>
+		<% @medias.each do |media| %>
+			<div class="col-md-3" data-identifier="<%= media.id %>">
+				<div class="thumbnail">
+					<%= render 'admin/media/caption', media: media %>
+
+					<%= thumbnail_for_media(media) %>
+				</div>
+			</div>
+		<% end %>
+	<% end %>
+</div>
+<% end %>
+
+<%= render 'admin/shared/layout' %>

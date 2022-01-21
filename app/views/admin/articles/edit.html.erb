@@ -1,0 +1,163 @@
+<% content_for :title do %>
+	<%= render 'admin/shared/heads' %>
+ 	<p>ARTICLE EDITOR</p>
+<% end %>
+
+<% content_for :buttons do %>
+    <%= link_to pages_path(@issue.to_param, @article), :class => 'btn btn-labeled btn-default' do %>
+      <span class="btn-label"><i class="fa fa-list"></i></span> Back to Page Gallery
+    <% end %>
+<% end %>
+
+<% content_for :page_content do %>
+	<div class="col-md-6 mt-20">
+	  <div class="panel panel-default">
+			<div class="panel-heading">
+				<span class="panel-title">Edit Article</span>
+			</div>
+
+	    <%= simple_form_for(@article, url: issue_article_path(@issue, @article)) do |f| %>
+				<div class="panel-body">
+					<div class="form-group">
+						<%= f.input :title, error: false, input_html: { :class => 'form-control' } %>
+					</div>
+
+					<% if @article.issue.is_issue? %>
+						<div class="form-group">
+							<%= f.input :issue_id, collection: Issue.publications, label_method: :alias_name, value_method: :id,
+								label: 'Document', prompt: false, input_html: { :class => 'form-control' } %>
+						</div>
+					<% end %>
+
+          <div class="form-group">
+            <%= f.input :friendly_id, label: "Custom URL", error: false, input_html: { :class => 'form-control' } %>
+          </div>
+
+					<div class="form-group">
+						<%= f.input :author_id, collection: Author.all.order("name ASC"), prompt: false, input_html: { :class => 'form-control' }, include_blank: 'Select an author' %>
+						<a class="btn btn-primary btn-sm btn-labeled" data-toggle="modal" href="#create-author">
+							<span class="btn-label"><i class="fa fa-plus"></i></span> Add new author
+						</a>
+					</div>
+
+					<div class="form-group">
+						<%= f.input :thumbnail, error: false, label: 'Nav Thumbnail (945x630)', input_html: { :class => 'form-control' } %>
+					</div>
+
+					<div class="form-group">
+						<%= f.input :social_thumbnail, label: 'Social Thumbnail (1200x630)', error: false, input_html: { :class => 'form-control' } %>
+					</div>
+
+					<div class="form-group">
+						<%= f.input :title_pic, label: 'Title Pic', error: false, input_html: { :class => 'form-control' } %>
+					</div>
+
+					<div class="form-group">
+						<%= f.input :social_title, error: false, label: 'Social Title', input_html: { :class => 'form-control', value: @article.social_title.try(:html_safe) } %>
+					</div>
+
+					<div class="form-group">
+						<%= f.input :description, error: false, label: 'Social Description', input_html: { :class => 'form-control no-resize' } %>
+					</div>
+
+					<div class="form-group">
+						<%= f.input :content, error: false, label: 'Overlay Content', input_html: { :class => 'form-control', :id => 'summernote' } %>
+					</div>
+				</div>
+
+				<div class="panel-footer">
+					<%= f.button :submit, :class => 'btn btn-primary btn-sm' %>
+
+					<%= link_to('Remove Article', issue_article_path(@issue, @article),
+						:class => 'btn btn-danger btn-sm', method: :delete,
+						:data  => { confirm: 'Are you sure you want to remove this article and all its pages?' }) %>
+				</div>
+	    <% end %>
+	  </div>
+	</div>
+
+	<div class="col-md-6 mt-20">
+		<div class="row col-md-12 no-padd">
+				<div class="col-md-6 panel panel-default no-padd">
+					<div class="panel-heading">
+						<span class="panel-title">Navigation Thumbnail</span>
+					</div>
+
+					<div class="panel-body no-padd" id="article-thumbnail">
+						<%= article_thumbnail_for(@article) unless @article.pages.empty? %>
+					</div>
+				</div>
+				<div class="col-md-6 panel panel-default no-padd">
+				<div class="panel-heading">
+					<span class="panel-title">Social Thumbnail</span>
+				</div>
+
+				<div class="panel-body no-padd" id="article-thumbnail">
+					<%= image_tag(@article.social_thumbnail_url ? @article.social_thumbnail_url : '') %>
+				</div>
+			</div>
+		</div>
+
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<span class="panel-title">Open Graph Web Scraper</span>
+			</div>
+			<div class="panel-body">
+				<p>Once an article is published, the first page of the article needs to be "scraped" by Facebook to pull the correct Open Graph content. You can do this by pasting the following URL into the <a class="text-strong" href="https://developers.facebook.com/tools/debug/" target="_blank">Facebook Open Graph Debugger</a>.</p>
+				<p>Try pasting both URL's and click "Scrape Again"<p>
+				<div class="well no-margin-hr">
+					<%= "https://realtheshiftdrink.herokuapp.com/admin/#{@article.issue.alias_name}/#{@article.friendly_id}" %>
+					<%= "https://realtheshiftdrink.herokuapp.com/#{@article.issue.alias_name}/#{@article.friendly_id}" %>
+				</div>
+			</div>
+		</div>
+	</div>
+<% end %>
+
+<%= render 'admin/shared/layout' %>
+
+<% content_for :javascripts do %>
+<script src='https://lovasoa.github.io/tidy-html5/tidy.js'></script>
+<script>
+$(function() {
+	options = {
+	  "indent":"auto",
+	  "indent-spaces":2,
+	  "wrap":80,
+	  "markup":true,
+	  "numeric-entities":true,
+	  "quote-marks":true,
+	  "quote-nbsp":false,
+	  "show-body-only":true,
+	  "quote-ampersand":false,
+	  "break-before-br":true,
+	  "uppercase-tags":false,
+	  "uppercase-attributes":false,
+	  "drop-font-tags":true,
+	  "tidy-mark":false
+	};
+
+	var pageEditor = $('#summernote');
+
+    pageEditor.summernote({
+      toolbar: [
+        ['style', ['bold', 'italic', 'underline', 'clear']],
+        ['color', ['color']],
+        ['para', ['ul', 'ol', 'paragraph']],
+        ['view', ['codeview']],
+      ],
+      height: 50,
+      codemirror: {
+        theme: 'monokai'
+      },
+      onChange: function(e) {
+        pageEditor.val( pageEditor.code() );
+      }
+    });
+
+    $('.edit_article').find('.note-editable').html(tidy_html5(`<%= (@article.content.blank? || @article.content == "<br>") ? "Content not available for this article." : raw(@article.content) %>`, options));
+});
+</script>
+<% end %>
+
+<%= render 'admin/authors/create' %>

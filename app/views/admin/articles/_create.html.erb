@@ -1,0 +1,17 @@
+<div class="modal fade" id="create-article" tabindex="-1" role="dialog" aria-labelledby="createArticle" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+    	<%= simple_form_for(Article.new, url: issue_articles_path(@issue)) do |f| %>
+      		<div class="modal-body">
+				<div class="form-group">
+					<%= f.input :title, error: false, label: false, input_html: { :class => 'form-control' }, placeholder: 'Enter the article title' %>
+				</div>
+
+				<div class="form-group no-margin-bottom">
+		      		<%= f.submit 'Create Article', :class => 'btn btn-primary form-control' %>
+				</div>
+	      	</div>
+        <% end %>
+    </div>
+  </div>
+</div><!-- #create-article -->

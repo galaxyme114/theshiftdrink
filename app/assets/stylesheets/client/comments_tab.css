@@ -1,0 +1,46 @@
+.comments-tab {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	cursor: pointer;
+	height: 60px;
+	background-color: #999999;
+	position: fixed;
+	bottom: -60px;
+	right:0;
+	width: 100vw;
+	z-index: 1000;
+    -webkit-transition: all 1s ease-in-out;
+    -moz-transition: all 1s ease-in-out;
+    -o-transition: all 1s ease-in-out;
+    transition: all 1s ease-in-out;
+}
+
+.comments-tab span {
+	color: white;
+	font-family: 'Oswald', sans-serif;
+	letter-spacing: 4px;
+  font-size: 33px;
+  text-transform: uppercase;
+}
+
+.comments-tab span br {
+	display: none;
+}
+
+.comments-tab .fa-times {
+	position: absolute;
+	color: white;
+	top: 5px;
+	right: 5px;
+	font-size: 15px;
+	z-index: 1050;
+}
+
+.mobile #bottom-bar .navigation ul.left-navigation img {
+	bottom: 21.5px;
+    -webkit-transition: all 1s ease-in-out;
+    -moz-transition: all 1s ease-in-out;
+    -o-transition: all 1s ease-in-out;
+    transition: all 1s ease-in-out;
+}

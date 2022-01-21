@@ -1,0 +1,47 @@
+$("#comments").html("<%= escape_javascript(render partial: 'comments/template', locals: { commentable: @article, new_comment: @new_comment } ) %>"); 
+
+$(function() {
+  $('.comment-reply').on('click', function() {
+    $(this).closest('.comment').find('.reply-form').first().toggle();
+  });
+
+  $('.comment-edit').on('click', function() {
+    $(this).closest('.comment').find('.comment-body form').first().toggle();
+    $(this).closest('.comment').find('.comment-body p').first().toggle();
+  });
+});
+
+$(function() {
+  /**
+   * Processes asynchronous form submissions
+   * 
+   * @return  triggers an alert message
+   */
+  $('form.async').on('submit', function(e) {
+
+    if ( !$(this).hasClass('async') ) $(this).submit().stop();
+
+    e.preventDefault();
+
+    var request = $(this).asynchronously();
+    var comment = $(this).closest('.comment');
+    var content = $(this).find('textarea').val();
+
+    request.done(function(response) {
+      comment.find('.comment-body form').first().toggle();
+
+      var paragraph = comment.find('.comment-body p').first();
+
+      paragraph.html(content);
+      paragraph.toggle();
+    });
+
+    request.fail(function(httpObj) {
+      if ( httpObj.status == 401 ) {
+        alert('Your session in no longer active.'); location.reload();
+      }
+
+      var response = JSON.parse(httpObj.responseText);
+    });
+  });
+});

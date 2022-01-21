@@ -1,0 +1,30 @@
+function getCorrectAd()
+{
+	if ($('.ad-skyscraper').is(":visible"))
+		var $ad = $('.ad-skyscraper2');
+	else if ($('.ad-skyscraper2').is(":visible"))
+		var $ad = $('.ad-skyscraper');
+	else if ($('.ad-mobile').is(":visible"))
+		var $ad = $('.ad-mobile2');
+	else if ($('.ad-mobile2').is(":visible"))
+		var $ad = $('.ad-mobile');
+	else
+		var $ad = [];
+	return ($ad);
+}
+
+var $ad = getCorrectAd();
+<% if browser.device.mobile? %>
+	var size = "300x500";
+	var setID = "204560";
+<% elsif browser.device.tablet? %>
+	var size = "728x90";
+	var setID = "203321";
+<% else %>
+	var size = "160x600";
+	var setID = "226343";
+<% end %>
+$ad = $ad.find('.ad-butler')
+if ( $ad.length > 0 ) {
+	$ad.adRequest("https://ab167867.adbutler-ikon.com/adserve/;ID=167867;type=json;click=CLICK_MACRO_PLACEHOLDER;size=" + size + ";setID=" + setID);
+};

@@ -1,0 +1,20 @@
+<%= title "The Shift Drink :: #{@issue.title}" %>
+
+<div id="container" class="<%= @issue.role.downcase %> <%= @issue.orientation.downcase %>">
+  <div id="wrapper">
+    <ul id="scroll-content" class="menu">
+      <% @thumbnails.sort_by(&:master_position).each do |thumbnail| %>
+        <li class="menu-item">
+          <%= link_to(issue_previewed_path(@issue.preview_token, thumbnail.friendly_id), class: 'nav-fade', rel: 'external') do %>
+            <%= sidebar_thumbnail_for(thumbnail, @articles, alt: thumbnail.title, width: "250", height: "167") %>
+          <% end %>
+        </li>
+      <% end %>
+			<p>© The Shift Drink - All Rights Reserved</p>
+    </ul>
+  </div>
+
+  <%= render 'issues/shared/content' %>
+
+  <%= render 'issues/shared/bottom' %>
+</div><!-- #container -->

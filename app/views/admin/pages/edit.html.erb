@@ -1,0 +1,64 @@
+<% content_for :title do %>
+	<%= render 'admin/shared/heads' %>
+ 	<p>PAGE EDITOR</p>
+<% end %>
+
+<% content_for :buttons do %>
+	<%= link_to pages_path(@issue, @page.article, @page), :class => 'btn btn-labeled btn-default' do %>
+		<span class="btn-label"><i class="fa fa-list"></i></span> Back to Page Gallery
+	<% end %>
+<% end %>
+
+<% content_for :page_content do %>
+<div class="col-md-8" id="edit-page">
+	<div class="panel panel-default">
+		<div class="panel-heading">Edit Page</div>
+
+		<%= simple_form_for(@page, url: page_path(@issue, @article, @page), method: :patch) do |f| %>
+			<div class="panel-body">
+				<div class="form-group">
+					<div class="well" style="padding: 10px">
+						<%= @page.friendly_id %>
+					</div>
+				</div>
+				<div class="form-group">
+					<%= f.input :full_page_ad, label: 'This page should trigger an interstitial advertisement.', error: false %>
+
+					<%= f.input :advertisement_thumb, label: 'Thumbnail for advertisement (optional)', error: false, input_html: { :class => 'form-control' } %>
+
+					<%= f.input :position, as: :hidden, error: false %>
+
+					<% if @page.advertisement_thumb? %>
+						<div class="well" style="float: left; width: 100%; padding: 14px">
+							<div class="col-md-8">
+								<%= File.basename @page.advertisement_thumb_url %>
+							</div>
+							<div class="col-md-4">
+								<div class="text-right">
+									<%= link_to('[remove]', page_remove_thumb_path(@issue, @article, @page), method: :delete, data: { confirm: 'Are you sure?' }) %>
+								</div>
+							</div>
+						</div>
+					<% end %>
+				</div>
+			</div>
+			<div class="panel-footer">
+				<%= f.button :submit, :class => 'btn btn-primary btn-sm' %>
+			</div>
+		<% end %>
+	</div>
+</div>
+
+<div class="col-md-4" id="edit-hyperlinks">
+	<% unless @page.advertisement_thumb.blank? %>
+		<div class="panel panel-default">
+			<div class="panel-heading">Thumbnail</div>
+			<div class="panel-body" id="article-thumbnail">
+				<%= image_tag(@page.thumbnail_url) %>
+			</div>
+		</div>
+	<% end %>
+</div>
+<% end %>
+
+<%= render 'admin/shared/layout' %>

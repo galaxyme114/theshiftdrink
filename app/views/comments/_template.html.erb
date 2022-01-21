@@ -1,0 +1,21 @@
+<% unless commentable.nil? %>
+	<div class="comments-header">
+		<%= image_tag @article.custom_thumbnail_url %>
+	</div>
+
+	<div class="comments-form">
+		<% if current_user %>
+			<%= render partial: "comments/form", locals: { new_comment: new_comment } %>
+		<% else %>
+			<%= render 'comments/auth/facebook' %>
+		<% end %>
+	</div>
+
+	<div class="comments-container">
+		<% if !current_user %>
+			<p class="text-center" style="margin: 20px 0">Login to view the editor's notes and reader comments.</p>
+		<% else %>
+		  <%= render partial: "comments/reply", locals: { comments: commentable.root_comments } %>
+		<% end %>
+	</div>
+<% end %>

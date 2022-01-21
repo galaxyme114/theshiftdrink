@@ -1,0 +1,14 @@
+<% if @issue.is_issue? %>
+	<div class="btn-social">
+		<a href="" target="_blank" class="btn btn-twitter" data-social="twitter"
+	    onclick="window.open(this.href, 'mywin', 'left=20,top=20,width=500,height=400,toolbar=1,resizable=0'); return false;">
+			<span class="btn-text">Tweet</span>
+	    <i class="fa fa-twitter"></i>
+	  </a>
+		
+	  <a class="btn btn-facebook" data-social="facebook">
+			<span>Share</span>
+	    <i class="fa fa-facebook-square"></i>
+	  </a>
+	</div>
+<% end %>

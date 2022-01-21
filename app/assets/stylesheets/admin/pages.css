@@ -1,0 +1,50 @@
+#issues, #pages, #edit-page, #edit-hyperlinks {
+  margin-top: 20px;
+}
+#issues .thumbnail, #pages .thumbnail {
+  cursor: pointer;
+}
+#issues .thumbnail > img,
+#pages .thumbnail > img {
+  height: 100%;
+  margin: 0;
+  width: 100%;
+}
+#issues .title {
+	font-size: 18px;
+	margin: 15px 0;
+}
+#issues .caption {
+	bottom:59px;
+}
+#create-page {
+  cursor: pointer;
+}
+.thumbnail {
+  position: relative;
+  overflow: hidden;
+}
+.caption {
+  position:absolute;
+  bottom:0;
+  right:0;
+  background: rgba(53, 53, 53, 0.85);
+  width:100%;
+  padding:2%;
+  display: none;
+  text-align:center;
+  color:#fff !important;
+  z-index:2;
+  cursor: pointer;
+}
+
+#medias .thumbnail {
+  width: 200px;
+  height: 200px;
+}
+#is_advertisement .checkbox {
+  line-height: 2.8;
+}
+#hyperlinked-page {
+  width: 100%;
+}

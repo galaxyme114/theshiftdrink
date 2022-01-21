@@ -1,0 +1,27 @@
+<% content_for :title do %>
+  <h4>Primary</h4>
+<% end %>
+
+<% content_for :buttons do %>
+    <%= link_to new_issue_path, :class => 'btn btn-labeled btn-default' do %>
+    	<span class="btn-label"><i class="fa fa-plus"></i></span> Create Primary
+    <% end %>
+<% end %>
+
+<% content_for :page_content do %>
+	<div id="issues" class="row">
+		<% @issues.sort_by{|issue| issue.title}.each do |issue| %>
+			<div class="col-md-3 thumbnail">
+				<%= link_to pages_path(issue, issue.first_article), :class => 'issue' do %>
+					<%= thumbnail_for(issue) %>
+				<% end %>
+				<%= render 'admin/issues/caption', issue: issue %>
+				<%= link_to pages_path(issue, issue.first_article) do %>
+					<p class="title text-centered"><%= issue.title %></p>
+				<% end %>
+			</div>
+		<% end %>
+	</div>
+<% end %>
+
+<%= render 'admin/shared/layout' %>

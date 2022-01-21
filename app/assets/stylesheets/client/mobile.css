@@ -1,0 +1,76 @@
+.mobile #bottom-bar {
+	height: 60px;
+}
+.mobile .subs_free {
+	left:5px;
+}
+
+.mobile #bottom-bar #title_pic{
+	height: 60px;
+	width: calc(100vw - 261px);
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+	bottom: 0;
+	z-index: -1;
+}
+
+.mobile #toggle-comments img{
+	z-index: 100;
+}
+.mobile #bottom-bar #title_pic img{
+	height: 50px;
+	z-index: 150;
+}
+
+.mobile #bottom-bar .navigation ul > li {
+	font-size: 26px;
+}
+.mobile #bottom-bar #toggle-thumbs {
+	margin-bottom: 6px;
+}
+.mobile .btn {
+	display: flex;
+	align-items: center;
+	padding: 10px 12px;
+	text-transform: uppercase;
+	font-size: 20px;
+}
+.mobile #bottom-bar  .btn-social .btn.btn-twitter {
+	display: none;
+}
+
+.mobile #bottom-bar .navigation ul.left-navigation {
+	padding: 3px 10px;
+}
+
+.mobile .comments-tab {
+	bottom: -60px;
+	height: 60px;
+}
+
+.mobile .fa-comments {
+	height: 40px;
+}
+
+.mobile .comments-tab span {
+	font-size: 16px;
+	display: flex;
+	justify-content: center;
+	align-content: center
+}
+
+.mobile .comments-tab span br {
+	display: block;
+}
+
+.mobile .followers {
+	width: 100vw;
+	max-width: 100vw;
+}
+
+#container.mobile .box {
+	height: calc(100vh - 120px);
+	max-height: calc(100vh - 120px);
+	top: 60px;
+}

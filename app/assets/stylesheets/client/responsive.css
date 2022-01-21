@@ -1,0 +1,108 @@
+@media ( max-width: 736px ) {
+  #container.mobile #bottom-bar .btn-social i {
+    margin: 0;
+  }
+  #container.mobile #bottom-bar .btn-social {
+    padding: 0px 2px;
+  }
+	#container #bottom-bar .navigation ul > li {
+	  padding: 8px 17.5px;
+	}
+	.btn-twitter {
+		display: none;
+	}
+	#container #bottom-bar .btn-social span {
+		display: initial;
+		padding-right: 5px;
+	}
+}
+@media ( max-width: 420px ) {
+  #container.mobile #bottom-bar .navigation {
+    text-align: left;
+  }
+	#container #bottom-bar .navigation ul > li {
+		padding: 8px 10px;
+	}
+	#container #bottom-bar .btn-social span {
+		font-size: 20px;
+		margin-right: 5px;
+	}
+	.mobile #bottom-bar #title_pic{
+		width: calc(100vw - 230px);
+	}
+}
+/*  iPhone 6 and iPhone 6 Plus (Portrait) */
+@media only screen and (min-device-width: 320px)  and (max-device-width: 736px) and (orientation:portrait) {
+  #container.mobile #bottom-bar .btn-social i {
+    margin: 0;
+  }
+  #container.mobile #bottom-bar .btn-social {
+    padding: 5px;
+  }
+  #container.mobile .box {
+    height: calc(90% - 45px);
+  }
+	#container.mobile.material .box {
+		top: 0;
+		transform: none;
+	}
+  #container.mobile .box > img {
+    width: 100% !important;
+  }
+  #comments {
+    width: 100% !important;
+  }
+  .sm-prev, .sm-fwd { display: none; }
+}
+
+/* iPhone 5 (Portrait) */
+@media only screen and (min-device-width: 320px)  and (max-device-width: 374px) and (orientation:portrait) {
+  #container.mobile #bottom-bar .btn-social i {
+    margin: 0;
+  }
+  #container.mobile #bottom-bar .btn-social {
+    padding: 4px 6px 0 16px;
+  }
+  #container.mobile .box > img {
+    width: 100% !important;
+  }
+  #comments {
+    width: 100% !important;
+  }
+  #bottom-bar #toggle-thumbs {
+    padding-left: 8px;
+    padding-top: 7px;
+  }
+  #bottom-bar #toggle-comments {
+    padding: 6px 12px;
+  }
+  .sm-prev, .sm-fwd { display: none; }
+}
+
+/*  iPhone 6 and iPhone 6 Plus (Landscape) */
+@media only screen and (min-device-width: 320px)  and (max-device-width: 736px) and (orientation:landscape) {
+	height: initial!important;
+}
+/*  iPad and Tablet (Portrait) */
+@media only screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:portrait) {
+  #container.mobile #bottom-bar .btn-social i {
+    margin: 0;
+  }
+  #container.mobile #bottom-bar .btn-social {
+    padding: 4px 6px 0 16px;
+  }
+  #container.mobile .box {
+    width: 100% !important;
+    margin-left: -50%;
+  }
+  #container.mobile .box > img {
+    width: 95%;
+    margin-top: 0;
+  }
+}
+/*  iPad and Tablet (Landscape) */
+@media only screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:landscape) {
+  #container.mobile .box {
+		height: inherit;
+  }
+}

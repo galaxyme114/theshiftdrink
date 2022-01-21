@@ -1,0 +1,39 @@
+<% content_for :title do %>
+  <h4>Supplemental</h4>
+<% end %>
+
+<% content_for :buttons do %>
+    <%= link_to materials_path, :class => 'btn btn-labeled btn-default' do %>
+    	<span class="btn-label"><i class="fa fa-list"></i></span> Back to Documents
+    <% end %>
+<% end %>
+
+<% content_for :page_content do %>
+<div class="col-sm-6">
+	<div class="panel panel-default">
+		<div class="panel-heading">Create Supplemental Document</div>
+		<%= simple_form_for(@material, url: materials_path, method: :post) do |f| %>
+			<div class="panel-body">
+				<div class="form-group">
+					<%= f.input :title, error: false, input_html: { :class => 'form-control' } %>
+				</div>
+				<div class="form-group hidden">
+					<%= f.input :number, collection: issue_numbers, selected: issue_count, error: false, input_html: { :class => 'form-control' } %>
+				</div>
+        <div class="form-group">
+					<%= f.input :alias_name, label: 'Custom URL (m-<name> / <name>, i.e. m-issue / issue)', error: false, input_html: { :class => 'form-control' } %>
+        </div>
+				<div class="form-group">
+					<%= f.input :orientation, collection: ['mobile', 'desktop'], error: false, input_html: { :class => 'form-control' } %>
+				</div>
+	    </div>
+			<div class="panel-footer">
+				<%= f.button :submit, 'Create Supplemental', :class => 'btn btn-primary btn-sm' %>
+			</div>
+		<% end %>
+	</div>
+</div>
+
+<% end %>
+
+<%= render 'admin/shared/layout' %>

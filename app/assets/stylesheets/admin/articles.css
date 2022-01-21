@@ -1,0 +1,63 @@
+.mt-20 {
+	margin-top: 20px;
+}
+.sidebar {
+  background-color: #f8f8f8;
+  border-left: 1px solid #e4e4e4;
+  border-top: 1px solid #e4e4e4;
+  height: 100vh;
+}
+.sidebar-header {
+  background-color: #f8f8f8;
+  min-height: 52px;
+}
+.sidebar-header ul {
+  padding-left: 10px;
+  margin: 0;
+  list-style-type: none;
+}
+.sidebar-header a {
+  margin: 9px;
+}
+#articles ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+#articles ul > li {
+  border-bottom: 1px solid #cacaca;
+  background: #ffffff;
+  cursor: move;
+  font-size: 13px;
+  padding: 20px;
+}
+#articles ul > .active {
+  text-decoration: underline;
+}
+#articles ul > li a {
+  color: #353535;
+  cursor: pointer;
+  font-weight: 700;
+}
+#articles .sortable-dragging {
+  border: 1px solid #cacaca;
+  background: #428bca;
+}
+#articles .sortable-dragging a {
+  color: #ffffff;
+}
+#articles ul > li > a.label {
+  padding: 5px;
+	color: white;
+}
+#create-article .modal-dialog {
+  width: 350px;
+}
+#cropbox {
+  width: 100%;
+}
+#article-thumbnail img {
+  width: 100%;
+}
+.edit_article .input-group .form-control {
+  width: 70%;
+}

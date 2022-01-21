@@ -1,0 +1,74 @@
+#media .thumbnail {
+  display: flex;
+  align-items: center;
+}
+#media .thumbnail > img {
+  width: 100%;
+  margin: 0;
+}
+#media .page-header {
+  color: #000;
+  text-transform: uppercase;
+  padding: 0;
+}
+#media .page-header #logo {
+  padding-left: 0;
+  text-align: left;
+}
+#media .page-header #title {
+  text-align: right;
+}
+#media p {
+  color: #FFF;
+}
+#media .filter {
+  color: #CCC;
+  margin-right: 10px;
+  font-size: 14px;
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+}
+#media .filter:hover {
+  color: #222222;
+}
+#media .filter.active {
+  color: #2ba198;
+}
+#media-header {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+.article-title {
+  position: absolute;
+  right: 0;
+  bottom: 5px;
+  font-size: 20px;
+}
+@media ( max-width: 900px ) {
+  #media-header {
+    display: block;
+  }
+}
+@media only screen and (max-device-width: 736px) and (orientation:portrait) {
+  #media-header {
+    display: block;
+  }
+  #media .page-header #title, #media .page-header #logo {
+    text-align: left;
+  }
+  #media .page-header #title {
+    margin-bottom: 10px;
+    padding-left: 5px;
+    font-size: 16px;
+  }
+  .article-title {
+    position: static;
+    font-size: 16px;
+  }
+  #media .col-lg-12 {
+    padding-left: 0;
+  }
+}

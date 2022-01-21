@@ -1,0 +1,8 @@
+var $ad = $('.interstitial-container').find('.ad-butler');
+if ( $ad.length > 0 ) {
+	<% if browser.device.mobile? %>
+	    $ad.adRequest('https://ab167867.adbutler-ikon.com/adserve/;ID=167867;type=json;click=CLICK_MACRO_PLACEHOLDER;size=300x480;setID=203523');
+	<% else %>
+	    $ad.adRequest('https://ab167867.adbutler-ikon.com/adserve/;ID=167867;type=json;click=CLICK_MACRO_PLACEHOLDER;size=1024x768;setID=203522');
+	<% end %>
+};

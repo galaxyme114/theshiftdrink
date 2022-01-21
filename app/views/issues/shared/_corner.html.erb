@@ -1,0 +1,32 @@
+<div class="followers">
+	<div class="close-followers-prompt">
+		<i class="fa fa-times"></i>
+	</div>
+	<div class="stage1">
+		<h4>More than a shitty website.</h4>
+		<h3>Or we like to think so.</h3>
+		<%= link_to user_omniauth_authorize_path(:facebook), :class => 'btn btn-block btn-social-login facebook', :target => '_blank' do %>
+			<span class="fa fa-facebook-square"></span><span class="subscribe_text"> Subscribe with Facebook</span>
+		<% end %>
+	</div>
+	<div class="stage2">
+		<h4>We are a free magazine.</h4>
+		<h3>An IG follow is the least you can do.</h3>
+		<a href="https://www.instagram.com/realtheshiftdrink/?ref=badge" target="_blank" class="ig-b- ig-b-v-24">
+			<img src="//badges.instagram.com/static/images/ig-badge-view-24.png" alt="Instagram" />
+		</a>
+		<script src="//lightwidget.com/widgets/lightwidget.js"></script><iframe src="//lightwidget.com/widgets/cd688a73093057ec8e166f80414e3cff.html" scrolling="no" allowtransparency="true" class="lightwidget-widget" style="width: 95%; border: 0; overflow: hidden;"></iframe>
+	</div>
+	<% if !current_user %>
+		<div class="stage3">
+			<h4>For the Industry. By the Industry.</h4>
+			<h3>Join the community.</h3>
+			<div class="fb-page"
+				data-href="https://www.facebook.com/realtheshiftdrink"
+				data-width="300"
+				data-hide-cover="true"
+				data-show-facepile="true"
+				data-small-header="true"></div>
+		</div>
+	<% end %>
+</div>

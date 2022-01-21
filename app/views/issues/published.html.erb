@@ -1,0 +1,61 @@
+<div id="container" class="<%= @issue.role.downcase %> <%= @issue.orientation.downcase %>">
+  <div id="wrapper">
+    <ul id="scroll-content" class="menu">
+      <% @thumbnails.sort_by(&:master_position).each do |thumbnail| %>
+        <li class="menu-item">
+          <%= link_to(issue_published_path(@issue.alias_name, thumbnail.friendly_id), class: 'nav-fade', rel: 'external') do %>
+            <%= sidebar_thumbnail_for(thumbnail, @articles, alt: thumbnail.title, width: "250", height: "167") %>
+          <% end %>
+        </li>
+      <% end %>
+			<p>© The Shift Drink - All Rights Reserved</p>
+    </ul>
+  </div>
+
+  <%= render 'issues/shared/content' %>
+
+  <div class="ad-wrapper">
+
+    <div id="main-advertisements">
+      <%= render 'issues/shared/advertisements' %>
+    </div>
+	</div>
+
+  <% if browser.device.mobile? %>
+		<div class="ad ad-mob ad-mobile">
+			<script type="text/javascript">
+				var AdButler = AdButler || {}; AdButler.ads = AdButler.ads || [];
+		    var abkw = window.abkw || '';
+		    var plc204560 = window.plc204560 || 0;
+		    document.write('<'+'div id="placement_204560_'+plc204560+'" class="ad-butler"></'+'div>');
+		    AdButler.ads.push({handler: function(opt){ AdButler.register(167867, 204560, [300,50], 'placement_204560_'+opt.place, opt); }, opt: { place: plc204560++, keywords: abkw, domain: 'ab167867.adbutler-ikon.com', click:'CLICK_MACRO_PLACEHOLDER' }});
+		  </script>
+			<small class="advertise-with-us"><a href="/<%= @issue.alias_name %>/advertise-with-us" target="_blank">ad info</a></small>
+	  </div>
+		<div class="ad ad-mob ad-mobile2">
+			<script type="text/javascript">
+				var AdButler = AdButler || {}; AdButler.ads = AdButler.ads || [];
+		    var abkw = window.abkw || '';
+		    var plc204560 = window.plc204560 || 0;
+		    document.write('<'+'div id="placement_204560_'+plc204560+'" class="ad-butler"></'+'div>');
+		    AdButler.ads.push({handler: function(opt){ AdButler.register(167867, 204560, [300,50], 'placement_204560_'+opt.place, opt); }, opt: { place: plc204560++, keywords: abkw, domain: 'ab167867.adbutler-ikon.com', click:'CLICK_MACRO_PLACEHOLDER' }});
+		  </script>
+			<small class="advertise-with-us"><a href="/<%= @issue.alias_name %>/advertise-with-us" target="_blank">ad info</a></small>
+	  </div>
+	<% elsif browser.device.tablet? %>
+		<div class="ad ad-tablet">
+			<script type="text/javascript">
+				var AdButler = AdButler || {}; AdButler.ads = AdButler.ads || [];
+				var abkw = window.abkw || '';
+				var plc203321 = window.plc203321 || 0;
+				document.write('<'+'div id="placement_203321_'+plc203321+'"></'+'div>');
+				AdButler.ads.push({handler: function(opt){ AdButler.register(167867, 203321, [728,90], 'placement_203321_'+opt.place, opt); }, opt: { place: plc203321++, keywords: abkw, domain: 'ab167867.adbutler-ikon.com', click:'CLICK_MACRO_PLACEHOLDER' }});
+			</script>
+			<small class="advertise-with-us"><a href="/<%= @issue.alias_name %>/advertise-with-us" target="_blank">Advertise with us</a></small>
+		</div>
+	<% end %>
+	<%= render 'issues/shared/corner' %>
+	<%= render 'issues/shared/comments_tab' %>
+	<%= render 'issues/shared/bottom' %>
+	<%= render 'issues/shared/popup' %>
+</div><!-- #container -->

@@ -1,0 +1,50 @@
+<%= render 'admin/shared/navbar' %>
+
+<div class="row">
+	<div class="col-md-<%= layout_length %> no-padd">
+		<div class="heading">
+			<div class="title">
+				<div class="col-sm-5">
+					<%= yield :title %>
+				</div>
+				<div class="col-sm-7">
+					<div class="pull-right">
+						<%= yield :buttons %>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div id="main-content" class="<%= ( @issue.nil? ) ? '' : @issue.role.downcase %>">
+			<div class="col-md-12">
+				<%= render 'admin/shared/messages' %>
+			</div>
+
+			<div class="<%= ( !admin_with_sidebar?(controller_name) ) ? 'col-md-10 col-md-offset-1' : 'col-md-12' %>">
+				<%= yield :page_content %>
+			</div>
+		</div>
+	</div><!-- /.col-md-9 -->
+
+	<% if admin_with_sidebar?(controller_name) %>
+		<div class="col-md-3 no-padd">
+			<div class="sidebar">
+				<section id="articles">
+					<ul class="sortable" data-href="<%= sort_issue_articles_url(@issue) %>">
+						<% @issue.articles.order(:position).each do |article| %>
+
+							<li data-identifier="<%= article.id %>">
+								<%= link_to(article.title, pages_path(@issue, article)) %>
+
+								<% if can?(:administrate, Article) %>
+									<%= link_to('Edit', edit_issue_article_path(@issue, article), :class => 'label label-default pull-right') %>
+								<% end %>
+							</li>
+
+						<% end %>
+					</ul>
+				</section>
+			</div>
+		</div><!-- /.col-md-3 -->
+	<% end %>
+</div>

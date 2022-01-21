@@ -1,0 +1,38 @@
+<% content_for :title do %>
+	<%= render 'admin/shared/heads' %>
+ 	<p>MEDIA EDITOR - NEW</p>
+<% end %>
+
+<% content_for :buttons do %>
+
+<% end %>
+
+<% content_for :page_content do %>
+	<div class="col-md-6">
+	  <div class="panel panel-default">
+	    <div class="panel-heading">Edit Media Object</div>
+
+      	<%= simple_form_for(:media, url: media_path(@issue, @article)) do |f| %>
+			<div class="panel-body">
+				<div class="form-group">
+					<%= f.input :override_url, error: false, input_html: { :class => 'form-control' }, label: 'From the web' %>
+				</div>
+
+				<div class="form-group">
+					<%= f.input :asset, as: :file, error: false, input_html: { :class => 'form-control' }, label: 'From your files' %>
+				</div>
+			</div>
+
+			<div class="panel-footer">
+				<%= f.button :submit, :class => 'btn btn-primary btn-sm' %>
+			</div>
+      	<% end %>
+	  </div>
+	</div>
+
+	<div class="col-md-5">
+
+	</div>
+<% end %>
+
+<%= render 'admin/shared/layout' %>

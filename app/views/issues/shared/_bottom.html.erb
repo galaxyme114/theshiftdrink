@@ -1,0 +1,39 @@
+<%= link_to user_omniauth_authorize_path(:facebook), :class => 'subs_free', :target => '_blank' do %>
+	SUBSCRIBE</br>FOR FREE
+<% end %>
+<div id="bottom-bar">
+  <div class="navigation">
+    <ul class="left-navigation">
+      <% if @issue.is_issue? %>
+        <li id="toggle-comments">
+          <%= link_to comments_path, :remote => true do %>
+            <i class="fa fa-comments" aria-hidden="true"></i>
+          <% end %>
+					<img src="https://d2y1ry8g49t2dy.cloudfront.net/static/arrows-in-vector-format.png"/>
+        </li>
+      <% end %>
+
+      <li id="toggle-thumbs">
+        <i class="fa fa-bars" aria-hidden="true"></i>
+      </li>
+    </ul>
+		<div id="title_pic">
+			<img />
+		</div>
+    <% if @issue.is_issue?  %>
+      <%= render 'issues/shared/social_buttons' %>
+    <% end %>
+  </div><!-- /.navigation -->
+</div><!-- #bottom-bar -->
+
+<% unless controller_name === 'materials' %>
+
+	<div class="hidden" id="refresh-ad">
+	  <%= link_to '', issue_advertisement_path, remote: true %>
+	</div>
+
+	<div class="hidden" id="refresh-interstitial">
+	  <%= link_to '', issue_interstitial_path, remote: true %>
+	</div>
+
+<% end %>

@@ -1,0 +1,131 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require_self
+ */
+
+.container {
+  font-family: 'Oswald', sans-serif;
+}
+.dashed {
+  border-top: 0;
+  padding: 40px;
+  padding-top: 20px;
+}
+#content-ribbon {
+  margin-top: -2px;
+  text-align: center;
+}
+#content-ribbon img {
+  width: 100%;
+}
+#content-ribbon .content {
+  background: url(https://s3-us-west-2.amazonaws.com/shiftdrink/static/cover-banner.png);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  opacity: 0.9;
+}
+#tds-banner {
+  margin-top: 20px;
+  width: 100% !important;
+}
+#shiftdrink-bg {
+  height: 100%;
+  left: 0;
+  overflow: hidden;
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+#shiftdrink-bg img {
+  width: 100%;
+  height: 100%;
+}
+#ipad-cover {
+  text-align: center;
+  margin-top: 20px;
+}
+#ipad-cover img {
+  width: 80%;
+}
+.overlay {
+  background: rgba(0, 0, 0, 0.5);
+  bottom: 0;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+#social {
+  z-index: 9999;
+  margin-top: 20px;
+  text-align: center;
+}
+.twitter-share-button, .twitter-follow-button { vertical-align: text-bottom !important; }
+.fb_iframe_widget iframe { margin-top: 4px; }
+.blurb {
+  text-align: center;
+  font-size: 18px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  color: #c9cacb;
+  text-transform: uppercase;
+}
+#social ul {
+  text-align: center;
+}
+#social ul > li {
+  display: inline;
+}
+#social img {
+  width: 10%;
+  margin: 10px 5px;
+}
+.for-the-industry {
+  margin-top: 20px;
+}
+
+a.thumbnail.active, a.thumbnail:focus, a.thumbnail:hover {
+  border-color: #ddd;
+}
+a:focus, a:hover {
+  color: none;
+}
+.hidden {
+  display: none;
+}
+@media ( max-width: 550px ) {
+  .col-xs-4 { width: 100%; margin-bottom: 10px; }
+  .fb_iframe_widget iframe { margin-top: 5px; }
+  #ipad-cover img { width: 100%; }
+  #shiftdrink-bg img { width: initial; }
+}
+
+@media (min-width: 410px) and (max-width: 900px) {
+  .col-md-4 {
+    width: 45%;
+    float: left;
+  }
+  .col-md-6 {
+    width: 55%;
+    float: left;
+  }
+  .col-md-offset-1 {
+    margin-left: 0%;
+  }
+  .twitter-share-button, .twitter-follow-button {
+    margin-top: 10px;
+  }
+  .blurb {
+    font-size: 14px;
+  }
+}

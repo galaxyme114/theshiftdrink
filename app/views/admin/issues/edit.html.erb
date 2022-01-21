@@ -1,0 +1,56 @@
+<% content_for :title do %>
+  <h4><%= @issue.alias_name %> - EDIT</h4>
+<% end %>
+
+<% content_for :buttons do %>
+    <%= link_to (@issue.is_issue? ? issues_path(@issue, @issue.first_article) : materials_path), class: 'btn btn-labeled btn-default' do %>
+      <span class="btn-label"><i class="fa fa-list"></i></span> Back to Documents
+    <% end %>
+<% end %>
+
+<% content_for :page_content do %>
+<div class="col-md-6">
+  <div class="panel panel-default">
+    <div class="panel-heading text-strong">Edit Document</div>
+      <%= simple_form_for(@issue) do |f| %>
+        <div class="panel-body">
+          <div class="form-group">
+            <%= f.input :title, error: false, input_html: { class: 'form-control' } %>
+          </div>
+
+          <div class="form-group hidden">
+            <%= f.input :number, collection: issue_numbers, selected: @issue.number, error: false, input_html: { class: 'form-control' } %>
+          </div>
+
+          <div class="form-group">
+            <%= f.input :alias_name, label: "Custom URL (m-<name> / <name>, i.e. m-issue / issue)", error: false, input_html: { class: 'form-control' } %>
+          </div>
+
+          <div class="form-group">
+            <div class="input string required issue_published_on">
+              <label class="string required" for="issue_published_on">Published On</label>
+            </div>
+            <div class="input-group date">
+              <%= f.input :published_on, as: :string, label: false, error: false, input_html: { class: 'form-control datepicker', data: { date_format: 'yyyy-mm-dd' } }, placeholder: 'yyyy-mm-dd' %>
+
+              <span class="input-group-addon">
+                <span class="fa fa-calendar"></span>
+              </span>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <%= f.input :orientation, collection: ['mobile', 'desktop'], default: 'mobile', error: false, input_html: { class: 'form-control' } %>
+          </div>
+        </div>
+
+        <div class="panel-footer">
+          <%= f.button :submit, class: 'btn btn-primary btn-sm' %>
+      </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+<% end %>
+
+<%= render 'admin/shared/layout' %>

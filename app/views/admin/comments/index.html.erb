@@ -1,0 +1,45 @@
+<% content_for :title do %>
+  <h4>Comments</h4>
+<% end %>
+
+<!-- <% content_for :buttons do %>
+    <%= link_to new_user_path, :class => 'btn btn-labeled btn-default' do %>
+    	<span class="btn-label"><i class="fa fa-plus"></i></span> Create User
+    <% end %>
+<% end %> -->
+
+<% content_for :page_content do %>
+<div class="panel panel-default">
+	<div class="panel-heading text-strong">Comments Directory</div>
+	<table class="table">
+		<thead>
+			<th>ID</th>
+			<th>User ID</th>
+			<th>Created At</th>
+			<th>Body</th>
+			<th>&nbsp;</th>
+		</thead>
+		<tbody>
+			<% @comments.each do |comment| %>
+				<tr>
+					<td><%= comment.id %></td>
+					<td><%= comment.user_id%></td>
+					<td><%= comment.created_at.strftime("%Y - %m - %d") %></td>
+					<td><%= comment.body %></td>
+					<td>
+						<div class="pull-right">
+							<% if can?(:manage, Comment)%>
+								<%= link_to comment_path(comment), method: :delete, :class => 'btn btn-xs btn-danger', data: { confirm: 'Are you sure you want to remove this comment?' } do %>
+									<span class="fa fa-times"></span> Remove
+								<% end %>
+							<% end %>
+						</div>
+					</td>
+				</tr>
+			<% end %>
+		</tbody>
+	</table>
+</div>
+<% end %>
+
+<%= render 'admin/shared/layout' %>

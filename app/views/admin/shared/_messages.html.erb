@@ -1,0 +1,6 @@
+<% flash.each do |key, value| %>
+  <% key = 'info' unless ['danger', 'success'].include?(key) %>
+  <div class="alert alert-<%= key %>">
+      <p><%= value %></p>
+  </div>
+<% end %>

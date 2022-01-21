@@ -1,0 +1,17 @@
+<div class="modal fade" id="create-author" tabindex="-1" role="dialog" aria-labelledby="createAuthor" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+    	<%= simple_form_for(Author.new, url: author_index_path) do |f| %>
+      	<div class="modal-body">
+					<div class="form-group">
+						<%= f.input :name, error: false, label: false, input_html: { :class => 'form-control' }, placeholder: 'Enter author\'s name' %>
+					</div>
+
+					<div class="form-group no-margin-bottom">
+	      		<%= f.submit 'Add new author', :class => 'btn btn-primary form-control' %>
+					</div>
+      	</div>
+      <% end %>
+    </div>
+  </div>
+</div><!-- #create-author -->

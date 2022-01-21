@@ -1,0 +1,27 @@
+<% content_for :title do %>
+  <h4>Supplemental</h4>
+<% end %>
+
+<% content_for :buttons do %>
+    <%= link_to new_material_path, :class => 'btn btn-labeled btn-default' do %>
+    	<span class="btn-label"><i class="fa fa-plus"></i></span> Create Supplemental
+    <% end %>
+<% end %>
+
+<% content_for :page_content do %>
+	<div id="issues" class="row">
+		<% @materials.sort_by{|issue| issue.title}.each do |material| %>
+			<div class="col-md-3 thumbnail">
+				<%= link_to pages_path(material, material.first_article), :class => 'issue' do %>
+					<%= thumbnail_for(material) %>
+				<% end %>
+				<%= render 'admin/issues/caption', issue: material %>
+				<%= link_to pages_path(material, material.first_article) do %>
+					<p class="title text-centered"><%= material.title %></p>
+				<% end %>
+			</div>
+		<% end %>
+	</div>
+<% end %>
+
+<%= render 'admin/shared/layout' %>

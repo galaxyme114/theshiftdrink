@@ -1,0 +1,75 @@
+<% content_for :title do %>
+	<%= render 'admin/shared/heads' %>
+ 	<p>HYPERLINK EDITOR</p>
+<% end %>
+
+<% content_for :buttons do %>
+  	<%= render 'admin/hyperlinks/buttons' %>
+<% end %>
+
+<% content_for :page_content do %>
+<div class="col-md-5">
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<span class="panel-title">Hyperlinks</span>
+
+			<%= link_to 'Create New', new_page_hyperlink_path(@issue, @article, @page), :class => 'btn btn-primary btn-xs pull-right' %>
+		</div>
+		<ul class="list-group">
+			<% if @hyperlinks.blank? %>
+				<li class="list-group-item">
+					<p class="no-margin text-center">None found.</p>
+				</li>
+			<% else %>
+				<% @hyperlinks.each do |hyperlink| %>
+					<li class="list-group-item">
+						<span class="label" style="background-color: #<%= hyperlink.label_color %>"><%= hyperlink.uuid %></span>
+
+						<small>(<%= hyperlink.source_url.include?('http') ? URI.parse(hyperlink.source_url).host.sub(/^www\./, '') : hyperlink.source_url %>)</small>
+
+						<%= link_to 'View', edit_page_hyperlink_path(@issue, @article, @page, hyperlink), :class => 'text-strong pull-right' %>
+					</li>
+				<% end %>
+			<% end %>
+		</ul>
+	</div>
+</div><!-- .col-md-4 -->
+<div class="col-md-7">
+	<div class="panel panel-default">
+		<div class="panel-body">
+			<div class="relative">
+		        <%= image_tag @page.image_url(:large), :id => 'hyperlinked-page' %>
+    	    	<% @hyperlinks.each do |hyperlink| %>
+					<div class="page-overlay"
+						 data-width="<%= hyperlink.coord_w %>"
+						 data-height="<%= hyperlink.coord_h %>"
+						 data-top="<%= hyperlink.coord_y %>"
+						 data-left="<%= hyperlink.coord_x %>"
+						 style="<%= styles_for_links(hyperlink) %>"></div>
+    	    	<% end %>
+    	    </div>
+		</div>
+	</div>
+</div><!-- .col-md-8 -->
+<% end %>
+
+<%= render 'admin/shared/layout' %>
+
+<% content_for :javascripts do %>
+  <script>
+	var cropper = $('#hyperlinked-page');
+	var overlays = $('.page-overlay');
+
+	$(window).on('resize', function() {
+		var aspect_ratio = 1536 / cropper.width();
+
+		$.each(overlays, function() {
+		  $(this).css('left',   $(this).data('left') / aspect_ratio);
+		  $(this).css('top',    $(this).data('top') / aspect_ratio);
+		  $(this).css('width',  $(this).data('width') / aspect_ratio);
+		  $(this).css('height', $(this).data('height') / aspect_ratio);
+		});
+	}).resize();
+
+  </script>
+<% end %>

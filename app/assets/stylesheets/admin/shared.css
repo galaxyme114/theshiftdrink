@@ -1,0 +1,192 @@
+#main-content > .col-md-10 {
+  margin-top: 30px;
+}
+#main-content .alert {
+  margin-left: -15px;
+  margin-right: -15px;
+}
+.heading {
+  background: #353535;
+  color: #EBEBEB;
+  padding: 20px 40px;
+	z-index: 100!important;
+}
+.heading .title {
+  display: inline-block;
+  border: 5px solid #FFF;
+  padding: 10px;
+  width: 100%;
+}
+.heading .title h3 {
+  font-size: 20px;
+	margin-top: 10px;
+  text-transform: uppercase;
+	background-color: white;
+	color: black;
+	width: auto;
+	display: inline-block;
+	padding: 10px;
+	text-align: center;
+}
+.heading .title p {
+  text-transform: uppercase;
+}
+.heading > nav {
+  display: inline-block;
+  float: right
+}
+.navbar {
+  margin-bottom: 0;
+  border-radius: 0;
+}
+.row {
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+.alert {
+  border-radius: 0 !important;
+}
+.btn, .panel, input[type="text"], input[type="email"], input[type="password"] {
+  border-radius: 0
+}
+.btn-labeled {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+.btn-label {
+  position: relative;
+  background: 0 0;
+  background: rgba(0,0,0,.15);
+  display: inline-block;
+  padding: 6px 12px;
+  left: -12px;
+}
+.btn-file {
+  position: relative;
+  overflow: hidden;
+  float: left;
+}
+.btn-file input[type=file] {
+  position: absolute;
+  top: 0;
+  right: 0;
+  min-width: 100%;
+  min-height: 100%;
+  font-size: 100px;
+  text-align: right;
+  filter: alpha(opacity=0);
+  opacity: 0;
+  background: red;
+  cursor: inherit;
+  display: block;
+}
+.thumbnail-input-readonly {
+  float: left;
+  width: 70%;
+}
+.form-group .required > abbr {
+  color: rgb(232, 31, 31);
+  font-weight: 700;
+}
+.form-control {
+  box-shadow: none;
+  -webkit-box-shadow: none;
+}
+.form-control:focus {
+  background: #FFFFFF;
+  box-shadow: none;
+  border-color: #CCCCCC;
+  -webkit-box-shadow: none;
+  color: #555555;
+}
+a:hover {
+  text-decoration: none !important;
+}
+.text-centered {
+  text-align: center;
+}
+.text-strong {
+  font-weight: 700;
+}
+.no-margin {
+  margin: 0 !important;
+}
+.no-margin-hr {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important
+}
+.no-margin-bottom {
+  margin-bottom: 0 !important;
+}
+.no-padd {
+  padding: 0 !important;
+}
+.no-padd-left {
+  padding-left: 0 !important;
+}
+.no-padd-right {
+  padding-right: 0 !important;
+}
+.no-resize {
+  resize: none;
+}
+.form-control {
+  border-radius: 0;
+}
+.relative {
+  position: relative;
+}
+
+#nprogress {
+  pointer-events: none;
+}
+
+#nprogress .bar {
+  background: #353535;
+
+  position: fixed;
+  z-index: 1031;
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 2px;
+}
+
+/* Fancy blur effect */
+#nprogress .peg {
+  display: block;
+  position: absolute;
+  right: 0px;
+  width: 100px;
+  height: 100%;
+  box-shadow: 0 0 10px #353535, 0 0 5px #353535;
+  opacity: 1.0;
+
+  -webkit-transform: rotate(3deg) translate(0px, -4px);
+      -ms-transform: rotate(3deg) translate(0px, -4px);
+          transform: rotate(3deg) translate(0px, -4px);
+}
+
+/* Remove these to get rid of the spinner */
+#nprogress .spinner {
+  display: block;
+  position: fixed;
+  z-index: 1031;
+  top: 15px;
+  right: 15px;
+}
+
+#nprogress .spinner-icon {
+  width: 18px;
+  height: 18px;
+  box-sizing: border-box;
+
+  border: solid 2px transparent;
+  border-top-color: #353535;
+  border-left-color: #353535;
+  border-radius: 50%;
+
+  -webkit-animation: nprogress-spinner 400ms linear infinite;
+          animation: nprogress-spinner 400ms linear infinite;
+}

@@ -1,0 +1,13 @@
+<% if can?(:administrate, Issue) %>
+    <div class="caption">
+			<p class="text-centered" style="margin: 5px 0"><%= issue.title %></br>
+			<% if issue.published_on %>
+				<i style="color: green" class="fa fa-check"></i></span> Published
+			<% else %>
+				<i style="color: red" class="fa fa-times"></i></span> Unpublished
+			<% end %>
+		</br>
+		<%= link_to('Edit', edit_issue_path(id: issue.id), :class => 'label label-default') %>
+		</p>
+	</div>
+<% end %>

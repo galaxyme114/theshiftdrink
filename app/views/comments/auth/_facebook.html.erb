@@ -1,0 +1,7 @@
+<%= link_to user_omniauth_authorize_path(:facebook), :class => 'btn btn-block btn-social-login facebook', :target => '_blank' do %>
+	<span class="fa fa-facebook"></span> Sign in with Facebook
+<% end %>
+
+<% flash.each do |key, value| %>
+	<p><%= value %></p>
+<% end %>

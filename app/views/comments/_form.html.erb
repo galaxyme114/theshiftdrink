@@ -1,0 +1,12 @@
+<%= simple_form_for @new_comment, url: comments_path, method: :post, remote: true do |f| %>
+	<%= f.input :commentable_id,   as: :hidden, value: @new_comment.commentable_id %>
+	<%= f.input :commentable_type, as: :hidden, value: @new_comment.commentable_type %>
+	
+	<div class="field form-group">
+		<textarea class="form-control no-resize" name="comment[body]" placeholder="Join the discussion..."></textarea>
+	</div>
+
+	<div class="field submit">
+		<%= f.submit 'Post Comment', :class => 'btn btn-primary btn-xs' %>
+	</div>
+<% end %>
